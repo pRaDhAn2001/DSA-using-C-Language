@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void bubble_sort(int arr[], int size);
+
+int main()
+{
+	int i, j, size;
+	printf("\t\t\tBUBBLE SORT PROGRAMME\t\t\t\n");
+	printf("\t\t\t*****-----------*****\t\t\n");
+	printf("Enter the size of the Array: \n");
+	scanf("%d", &size);
+	
+	int arr[size];
+	printf("Enter the Elements of the Array :\n");
+	for(i=0; i<size; i++)
+	{
+		scanf("%d", &arr[i]);
+	}
+	
+	printf("\n\nOriginal Order of given Elements is: \n");
+	for(i=0; i<size; i++)
+	{
+		printf("%d\t", arr[i]); 
+	}
+	
+	bubble_sort(arr, size);
+	
+	printf("\n\nAscending Order of given Elements is: \n");
+	for(i=0; i<size; i++)
+	{
+		printf("%d\t", arr[i]); 
+	}
+	
+	return 0;
+}
+
+void bubble_sort(int arr[], int size)
+{
+	int i, j, temp, flag;
+	for(i=0; i<size-1; i++)
+	{
+		flag = 0;
+		for(j=0; j<size-i-1; j++)
+		{
+			if(arr[j] > arr[j+1])
+			{
+				temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+				flag = 1;
+			}
+		}
+		if(flag == 0)
+		break;
+	}
+}
