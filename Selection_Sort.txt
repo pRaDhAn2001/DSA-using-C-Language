@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void selection_sort(int arr[], int size);
+
+int main()
+{
+	int i, j, size;
+	printf("\t\t\tSELECTION SORT PROGRAMME\t\t\t\n");
+	printf("\t\t\t*****--------------*****\t\t\n");
+	printf("Enter the size of the array: \n");
+	scanf("%d", &size);
+	
+	int arr[size];
+	printf("Enter the Elements of the Array :\n");
+	for(i=0; i<size; i++)
+	{
+		scanf("%d", &arr[i]);
+	}
+	
+	printf("\n\nOriginal Order of given Elements is :\n");
+	for(i=0; i<size; i++)
+	{
+		printf("%d\t", arr[i]); 
+	}
+	
+	selection_sort(arr, size);
+	
+	printf("\n\nAscending Order of given numbers is :\n");
+	for(i=0; i<size; i++)
+	{
+		printf("%d\t", arr[i]); 
+	}	
+
+	return 0;
+}	
+
+void selection_sort(int arr[], int size)
+{	
+	int i, j, min, temp;
+	for(i=0; i<size-1; i++)
+	{
+		int min = i;
+		for(j=i+1; j<size; j++)
+		{
+			if (arr[j] < arr[min])
+			{
+				min = j;
+			}
+		}
+		
+		if(min != i)
+		{
+			temp = arr[min];
+			arr[min] = arr[i];
+			arr[i] = temp;
+		}
+	}
+}
+	
