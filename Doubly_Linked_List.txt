@@ -24,17 +24,17 @@ void reverse_list();
 
 int main()
 {
-    int data, v, select; 
+    	int data, select; 
 	head=0, tail=0;
 	
 	printf("\n\t\t\tDOUBLY LINKED LIST PROGRAMME");
 	printf("\n\t\t\t****--------------------****\n");  
 	
-    printf("\nCreation of Doubly Linked List: \n");
+    	printf("\nCreation of Doubly Linked List: \n");
 	create_list();
 	printf("\nThe Linked List is :- \n");
 	display();
-	v = get_length();
+	int v = get_length();
 	
 	do
 	{
@@ -124,12 +124,11 @@ int main()
 		}
 	else if(select == 5)
 		{
-			printf("The Length of linked list is : \n");
 			get_length();
 		}
 	}
 	while(select != 0);
-	
+	printf("\n");
 	printf("EXIT PROGRAM \n");
 	return 0;
 }
@@ -340,5 +339,5 @@ int get_length()
 		temp = temp->next;
 		count++;
 	}
-	return count;
+	printf("The Length of linked list is %d : \n",count);
 }
