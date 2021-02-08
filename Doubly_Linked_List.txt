@@ -339,5 +339,5 @@ int get_length()
 		temp = temp->next;
 		count++;
 	}
-	printf("The Length of linked list is %d : \n",count);
+	printf("The Length of linked list is : %d",count);
 }
