@@ -1,0 +1,110 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define N 10
+
+int stack[N];
+int top=-1;
+
+void push(void);
+void pop(void);
+void peek(void);
+void display(void);
+
+int main()
+{
+	int choice;
+	printf("\n\t\t\tSTACK OPERATIONS USING ARRAY");
+	printf("\n\t\t\t****--------------------****\n");
+	
+	do
+	{
+		printf("\nEnter choice:\n1.Push\t2.Pop\t3.Peek\t4.Display\t0.Exit\n");
+		scanf("%d", &choice);
+		{
+			switch(choice)
+			{
+				case 1:
+					push();
+					break;
+					
+				case 2:
+					pop();
+					break;
+					
+				case 3:
+					peek();
+					break;
+					
+				case 4:
+					display();
+					break;
+					
+				default:
+					printf("Wrong Choice\n");
+			}
+		}
+	}
+	while(choice != 0);
+	
+	printf("\nExit Programme\n");
+	return 0;
+}
+
+void push()
+{
+	int data;
+	printf("\nEnter data to push:\n");
+	scanf("%d", &data);
+	if (top == N-1)
+	{
+		printf("\nOverflow\n");
+	}
+	else
+	{
+		top++;
+		stack[top] = data;
+		printf("\nThe pushed value is %d\n", data);
+	}
+}
+
+void pop()
+{
+	int item;
+	if(top == -1)
+	{
+		printf("\nUndeflow\n");
+	}
+	else
+	{
+		item = stack[top];
+		top--;
+		printf("\nThe popped value is %d\n", item);
+	}
+}
+
+void peek()
+{
+	if(top == -1)
+	{
+		printf("\nEmpty Stack \n");
+	}
+	else
+	{
+		printf("\nThe top value is %d\n", stack[top]);
+	}
+}
+
+void display()
+{
+	int i;
+	printf("\nThe data values of Stack are: \n\n");
+	if(top >= 0)
+	{
+		for(i = top; i >= 0; i--)
+		printf("%d\t", stack[i]);
+	}
+	else
+	{
+		printf("\nStack is empty\n");
+	}
+}
