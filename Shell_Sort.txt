@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void shell_sort(int arr[], int size);
+void swap(int* a, int* b);
+
+int main()
+{
+	int i, size;
+	printf("\n\t\t\tSHELL SORT PROGRAMME\n");
+	printf("\t\t\t****------------****\n\n");
+	printf("Enter the size of the Array: \n");
+	scanf("%d", &size);
+	
+	int arr[size];
+	printf("Enter the Elements of the Array :\n");
+	for(i=0; i<size; i++)
+	{
+		scanf("%d", &arr[i]);
+	}
+	
+	printf("\n\nOriginal Order of given Elements is: \n");
+	for(i=0; i<size; i++)
+	{
+		printf("%d\t", arr[i]); 
+	}
+	
+	shell_sort(arr, size);
+	
+	printf("\n\nAscending Order of given Elements is: \n");
+	for(i=0; i<size; i++)
+	{
+		printf("%d\t", arr[i]); 
+	}
+	
+	return 0;
+}
+
+void swap(int* a, int* b)
+{
+	int t = *a;
+	*a = *b;
+	*b = t;
+}
+
+void shell_sort(int arr[], int size)
+{
+    int i, j, gap;
+    for (gap = size / 2; gap >= 1; gap = gap / 2)
+    {
+        for (j = gap; j < size; j++)
+        {
+            for(i = j - gap; i >= 0; i = i - gap)
+            {
+                if (arr[i+gap] >= arr[i])
+                {
+					break;
+				}
+                else
+                {
+                    swap(&arr[i+gap], &arr[i]);
+                }
+            }
+        }
+    }
+}
