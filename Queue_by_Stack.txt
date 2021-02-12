@@ -1,0 +1,137 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define N 10
+
+int S1[N], S2[N];
+int top1 = -1;
+int top2 = -1;
+int count = 0;
+
+void push1(int);
+void push2(int);
+int pop1();
+int pop2();
+void enqueue();
+void dequeue();
+void display();
+
+void enqueue()
+{
+	int data;
+	printf("\nEnter the Value to enqueue: \n");
+	scanf("%d", &data);
+	push1(data);
+	count ++;
+}
+
+void push1(int data)
+{
+	if(top1 == N - 1)
+	{
+		printf("Overlow condition\n");
+	}
+	else
+	{
+		top1 ++;
+		S1[top1] = data;
+	}
+}
+
+void push2(int data)
+{
+	if(top2 == N - 1)
+	{
+		printf("\nOverlow condition\n");
+	}
+	else
+	{
+		top2 ++;
+		S2[top2] = data;
+	}
+}
+
+void dequeue()
+{
+	int i, loc, val;
+	if(top1 == -1 && top2 == -1)
+	{
+		printf("\nUnderflow\n");
+	}
+	else
+	{
+		for(i = 0; i < count; i++)
+		{
+			loc = pop1();
+			push2(loc);
+		}
+		val = pop2();
+		printf("\nThe Dequeued element is %d", val);
+		count --;
+		for(i = 0; i < count; i++)
+		{
+			loc = pop2();
+			push1(loc);
+		}
+	}
+}
+
+int pop1()
+{
+	return S1[top1--];
+}
+
+int pop2()
+{
+	return S2[top2--];
+}
+
+void display()
+{
+	int i;
+	printf("\nThe Data Values of Queue are :\n");
+	if(top1 == -1)
+	{
+		printf("\nQueue is empty\n");
+	}
+	for(i = 0; i <= top1; i++)
+	{
+		printf("%d\t", S1[i]);
+	}
+}
+
+int main()
+{
+	int choice;
+	printf("\n\t\t\tQUEUE OPERATIONS USING STACK");
+	printf("\n\t\t\t****--------------------****\n");
+	
+	do
+	{
+		printf("\nEnter choice:\n1.Enqueue\t2.Dequeue\t3.Display\t0.Exit\n");
+		scanf("%d", &choice);
+		{
+			switch(choice)
+			{
+				case 1:
+					enqueue();
+					break;
+					
+				case 2:
+					dequeue();
+					break;
+				
+				case 3:
+					display();
+					break;
+					
+				default:
+					printf("Wrong Choice\n");
+			}
+		}
+	}
+	while(choice!=0);
+	
+	printf("Exit Programme\n");
+	return 0;
+} 
+	
